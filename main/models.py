@@ -9,3 +9,4 @@ class Product(models.Model):
     description = models.TextField()
     price = models.CharField(max_length=255, default='')
     category = models.TextField()
+    date_added = models.DateField(auto_now=True, null = True)

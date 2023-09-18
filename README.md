@@ -2,9 +2,11 @@ Nama : Rahida Syafa Nurdya
 NPM  : 2206829023
 Kelas: PBP-B
 
+
 Link aplikasi Adaptable yang telah dideploy: https://nonasweetcreations.adaptable.app
 Link repositori github: https://github.com/Rahidasyf/inventori.git
 
+**TUGAS 2**
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
     1. membuat direktori utama baru dengan nama "inventori";
     2. kita akan membuka cmd/command prompt pada  direktori utama "inventori";
@@ -169,7 +171,7 @@ Link repositori github: https://github.com/Rahidasyf/inventori.git
 
 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
     - Virtual Environment digunakan untuk mengisolasi package/lingkungan dan dependencies dari aplikasi agar tidak saling bertabrakan dengan versi lain yang ada didalam komputer yang mungkin berbeda. Virtual Environment bergunak untuk memastikan bahwa ketika kita melakukan pembaruan pada suatu library di salah satu proyek, versi library tersebut tidak akan berubah pada proyek lainnya. Dengan Virtual Environment akan mempertahankan konsistensi ketika diimplementasi di lingkungan yang berbeda (mengurangi masalah).
-    - Membuat aplikasi web berbasis Django tanpa menggunakan virtual environment bisa saja dilakukan, namun itu tidak disarankan karena hal ini merupakan praktik yang kurang baik yang dapat menyebabkan masalah dalam pengembangan dan pemeliharaan proyek Anda. Tanpa virtual environment, kita akan lebih rentan terhadap konflik dependensi, masalah kompatibilitas, dan sulit untuk mengelola proyek yang lebih besar atau lebih kompleks. Peran Virtual Environment untuk mengisolasi, mengorganisasi serta mengelola proyek yang kita buat yang dapat mencegah adanya masalah jika tidak digunakan mungkin saja akan menimbulkan banyak masalah bagi proyek kita kedepannya.
+    - Membuat aplikasi web berbasis Django tanpa menggunakan virtual environment bisa saja dilakukan, namun itu tidak disarankan karena hal ini merupakan praktik yang kurang baik yang dapat menyebabkan masalah dalam pengembangan dan pemeliharaan proyek. Tanpa virtual environment, kita akan lebih rentan terhadap konflik dependensi, masalah kompatibilitas, dan sulit untuk mengelola proyek yang lebih besar atau lebih kompleks. Peran Virtual Environment untuk mengisolasi, mengorganisasi serta mengelola proyek yang kita buat yang dapat mencegah adanya masalah jika tidak digunakan mungkin saja akan menimbulkan banyak masalah bagi proyek kita kedepannya.
 
 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
     - MVC (Model-View-Controller) adalah sebuah pola arsitektur dalam pengembangan sistem web yang terdiri dari tiga elemen utama, yaitu:
@@ -190,3 +192,15 @@ Link repositori github: https://github.com/Rahidasyf/inventori.git
         - ViewModel: Bertindak sebagai perantara antara Model dan View. Ini mengelola pemformatan dan representasi data yang sesuai dengan tampilan. ViewModel juga dapat mengandung logika tampilan yang sederhana.
     
     **Perbedaan ketiganya** terletak pada bagaimana mereka mengelola tampilan dan alur kontrol, serta memisahkan komponen dalam pengembangan aplikasi. MVC memiliki kontroler yang mengendalikan alur, MVT menggunakan Template untuk mengatur tampilan, dan MVVM memiliki ViewModel yang bertindak sebagai perantara antara Model dan View. Pemilihan pola tergantung pada jenis aplikasi yang akan dibuat, dikembangkan, kerangka kerja yang digunakan, serta preferensi dan kebutuhan spesifik terkait proyek yang ingin dibuat. 
+
+**TUGAS 3**
+1. Apa perbedaan antara form POST dan form GET dalam Django?
+    - **POST** -> Permintaan POST digunakan untuk **mengirim data** (file, data formulir, dll.) ke server. Jika berhasil berhasil, maka akan mengembalikan kode status **HTTP 201 (OK)**. POST **mengirimkan data** baru ke API. Data dikirim secara **langsung dan tidak ditampilkan di URL**. Data yang dikirim melalui form POST **tidak dibatasi panjang string** dan **lebih aman**. Pengambilan variabel dilakukan dengan **request.POST.get**. 
+    Data formulir dikirimkan dalam badan permintaan HTTP. Ini berarti data formulir tidak akan terlihat dalam URL. Oleh karena itu, lebih aman untuk mengirim data sensitif seperti kata sandi. Formulir dapat diamankan dengan menggunakan token CSRF (Cross-Site Request Forgery) dalam Django untuk mencegah serangan palsu terhadap situs web.
+    POST tidak memiliki batasan kapasitas data yang ketat, sehingga kita dapat mengirimkan dalam jumlah data yang lebih besar. POST biasanya digunakan ketika Anda ingin mengirim data formulir untuk membuat, memperbarui, atau menghapus sesuatu di server, atau ketika Anda ingin mengunggah file.
+    - **GET** -> Permintaan GET digunakan untuk **membaca/mengambil** data dari server web. GET mengembalikan **HTTP kode status 200 (OK)** jika data berhasil diambil dari server. GET **mengambil data** dari API. Data dikirim **tidak langsung dan ditampilkan di URL** sehingga user dapat dengan mudah memasukkan nilai. Data yang dikirim melalui form GET **dibatasi panjang string sampai 2047 karakter** dan **kurang aman**. Pengambilan variabel dilakukan dengan **request.GET.get**. 
+    Data formulir ditambahkan ke URL sebagai parameter query string. Ini membuat data dapat terlihat di URL, yang bisa kurang aman, terutama jika formulir berisi informasi sensitif.
+    GET memiliki batasan kapasitas yang terbatas karena data dikirim melalui URL yang memiliki batasan panjang. GET umumnya digunakan untuk mengambil data dari server, seperti melakukan pencarian atau menavigasi ke halaman berdasarkan parameter URL.
+Dalam penggunaannya, form POST digunakan untuk *mengirim data yang bersifat sensitif* atau data yang akan mengubah keadaan sistem, seperti mengubah database. Sedangkan form GET digunakan untuk mengambil *data yang tidak bersifat sensitif*, seperti form pencarian
+
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
