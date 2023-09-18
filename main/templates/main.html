@@ -1,33 +1,68 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Menu Nona's Sweet Creation</title>
-        <h3>Name: </h3>
-        <p>{{name}}<p>
-        <h3>Class: </h3>
-        <p>{{kelas}}<p>
-</head>
-<h1>Nona's Sweet Creations</h1>
-<body>
-    <table border="1">
+{% extends 'base.html' %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Menu Nona's Sweet Creation</title>
+            <h3>Name: </h3>
+            <p>{{name}}<p>
+            <h3>Class: </h3>
+            <p>{{kelas}}<p>
+    </head>
+    <h1>Nona's Sweet Creations</h1>
+    <body>
+        <table border="1">
+            <tr>
+                <th colspan="1" bgcolor="#E6896B">The Sweet Creations</th>
+            </tr>
+            <tr>
+                <td rowspan="1">
+                    <img src="https://static.vecteezy.com/system/resources/previews/024/501/667/non_2x/jajan-tampah-assorted-colorful-indonesian-traditional-cakes-served-during-festivities-photo.jpg" width="200" />
+                </td>
+            </tr>
+        </table>
+    </body>
+    <h5>Item Name: </h5>
+    <p>{{menu}}<p>
+    <h5>Stock Amount: </h5>
+    <p>{{amount}}<p>
+    <h5>Description: </h5>
+    <p>{{description}}<p>
+    <h5>Price: </h5>
+    <p>{{price}}<p>
+    <h5>Category: </h5>
+    <p>{{category}}<p>
+    </html>
+
+    <table>
         <tr>
-            <th colspan="1" bgcolor="#E6896B">Menu</th>
+            <th>Item Name</th>
+            <th>Stock Amount</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
         </tr>
-        <tr>
-            <td rowspan="1">
-                <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2022/11/7/7a52f071-fdae-47e6-a60a-b35f52e8529d.jpg" width="200" />
-            </td>
-        </tr>
+    
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    
+        {% for product in products %}
+            <tr>
+                <td>{{product.menu}}</td>
+                <td>{{product.amount}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.category}}</td>
+            </tr>
+        {% endfor %}
     </table>
-</body>
-<h5>Item Name: </h5>
-<p>{{menu}}<p>
-<h5>Stock Amount: </h5>
-<p>{{amount}}<p>
-<h5>Description: </h5>
-<p>{{description}}<p>
-<h5>Price: </h5>
-<p>{{price}}<p>
-<h5>Category: </h5>
-<p>{{category}}<p>
-</html>
+    
+    <br />
+    
+    <a href="{% url 'main:create_product' %}">
+        <button>
+            Add New Product
+        </button>
+    </a>
+
+{% endblock content %}
