@@ -204,3 +204,154 @@ Link repositori github: https://github.com/Rahidasyf/inventori.git
 Dalam penggunaannya, form POST digunakan untuk *mengirim data yang bersifat sensitif* atau data yang akan mengubah keadaan sistem, seperti mengubah database. Sedangkan form GET digunakan untuk mengambil *data yang tidak bersifat sensitif*, seperti form pencarian
 
 2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+    **XML *(eXtensible Markup Languange)***
+        - XML didesain *self-descriptive* sehingga kita dapat mengerti informasi yang disampaikan dari data yang tertulis
+        - XML digunakan untuk **menyimpan dan mengirimkan data**
+        - XML berisi informasi yang dibungkus di dalam ***tag***  
+        - Kita perlu menulis program untuk mengirim, menerima, menyimpan, atau menampilkan informasi
+        - **Struktur**: XML merupakan bahasa yang memiliki struktur hierarki yang kuat karena data dalam XML membentuk struktur yang bersarang seperti *tree* yang diawali oleh *root* -> *branch* -> *leaves*. Dokumen XML harus mengandung sebuah root element (parent element lain)
+        - **Tujuan**: XML dikembangkan untuk menggambarkan struktur data dan membantu pertukaran data antara aplikasi yang berbeda dengan cara yang dapat dibaca dan dipahami oleh manusia
+        - **Tags**: XML menggunakan tags khusus untuk mengelompokkan dan mengidentifikasi data, kita juga dapat membuat DTD *Document Type Definition*/skema XML untuk mendefinisikan struktur data yang lebih ketat
+        - **Penggunaan**: XML digunakan untuk konfigurasi file, menukar data, dan menyimpan data struktural
+        - **Sensitifitas**: Pada setiap elemen dalam XML perlu memiliki closing tag. Tag dalam XML sifatnya case sensitive (besar kecil huruf juga berpengaruh)
+
+    **JSON *(JavaScript Object Notation)***
+        - JSON didesain *self-describing* yang mudah dimengerti
+        - JSON digunakan untuk **menyimpan dan mengirim data**
+        - Sintaksnya merupakan turunan dari *Object* JavaScript
+        - Format JSON berbentuk ***text*** yang membuat kode untuk membaca dan membuat JSON banyak terdapat dibanyak bahasa pemrograman
+        - **Struktur**: JSON merupakan format data ringan yang terdiri dari ***key-value pairs*** yang digunakan untuk menggambarkan objek. Data JSON **lebih sederhana** dibandingkan XML
+        - **Tujuan**: JSON dikembangkan untuk pertukaran data antara aplikasi yang berjalan di platform yang berbeda (biasanya dilakukan dalam lingkungan web)
+        - **Notasi**: JSON menggunakan notasi objek JavaScript
+        - **Penggunaan**: JSON digunakan untuk mengirim dan menerima data antara server dan browser, serta antara server dan server dalam format yang ringkas dan mudah dibaca mesin
+
+    **HTML *(Hypertext Markup Language)***
+        - HTML merupakan penanda bahasa yang digunakan untuk membuat struktur dan tampilan konten pada halaman web
+        - **Struktur**: HTML menggunakan elemen-elemen **markup** untuk menggambarkan berbagai jenis konten, seperti teks, gambar, tautan dan formulir
+        - **Tujuan**: HTML digunakan untuk membangun struktur dokumen web, **bukan untuk pertukaran data**. HTML digunakan untuk **menggambarkan konten dan tata letak** halaman web
+        - **Interaktivitas**: HTML digunakan bersama dengan JavaScript untuk menambahkan interaktivitas dan fungsionalitas ke halaman web
+        - **Penggunaan**: HTML merupakan **bahasa dasar** yang digunakan untuk membuat halaman web dan **tidak digunakan untuk mengirim data** dalam format yang sama seperti XML ataupun JSON
+
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+    - **Mudah dibaca**: 
+    JSON menggunakan **notasi objek JavaScript** yang sederhana sehingga mudah dibaca dan diinterpretasi oleh mesin.
+    - **Ringkas**: 
+    JSON memiliki struktur dan format data yang ringan dan ringkas sehingga mengurangi overhead data yang menghemat *bandwidth*
+    - **Lingkungan Web Alami**: 
+    JSON menggunakan sintaksis yang mirip dengan objek JavaScript sehingga banyak digunakan untuk pengembangan web. Sebagian bahasa pemrograman yang digunakan di web dapat dengan mudah mengurai dan membangun data JSON, sehingga dapat mempermudah pengolahan data dari sisi klien (browser) dan server
+    - **Serialisasi dan Deserialisasi Mudah**:
+    Library dan framework yang luas telah dikembangkan untuk mendukung serialisasi (mengubah data menjadi JSON) dan deserialiasi (mengubah JSON menjadi objek atau struktur data) dalam berbagai bahasa pemrograman sehingga mempermudah proses pertukaran data antara berbagai bahasa dan platform
+    - **Cross-Origin Resource Sharing (CORS)**:
+    Dalam pertukaran data melalui HTTP, JSON mendukung CORS yang memungkinkan aplikasi web mengambil data dari domain yang berbeda tanpa masalah keamanan cross-origin
+    - **Fleksibel**:
+    JSON dapat mewakili berbagai jenis data yang membuatnya sangat fleksibel untuk menggambarkan berbagai jenis informasi
+    - **Ringan dan Efisien**:
+    JSON memiliki overhead data yang kecil dibandingkan format pertukaran data lain seperti XML yang dapat menghemat bandwidth dan mempercepat proses transfer data
+    - **RESTful APIs**: JSON digunakan dalam pengembangan layanan web RESTful sehingga data dapat dikirim dan diterima dengan permintaan HTTP GET, POST, PUT, dan DELETE
+    - **Dokumentasi yang Baik**:
+    JSON didokumentasikan dengan baik dalam API yang memudahkan pengembangan untuk memahami struktur data yang diharapkan
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+    **Tahap Awal**
+    1. Mengaktifkan virtual environment pada cmd root folder. 
+    2. Mengatur routing agar sesuai dengan konvensi yang ada dengan mengubah isi pada file 'urls.py' yang ada di subdirektori inventori dengan mengubah path 'main/' dengan '' pada list urlspatterns
+    3. Buat skeleton/kerangka dengan membuat file base.html yang merupakan kerangka umum.
+    4. Pada file setting.py di subdirektori inventori tambahkan 'DIRS': [BASE_DIR / 'templates'], pada list TEMPLATES agar file base.html dapat terdeteksi sebagai berkas template
+    5. Merubah kode pada berkas main.html menjadi kode yang menggunakan 'base.html' sebagai template utama
+
+    **Membuat input form untuk menambahkan objek model pada app sebelumnya.**
+    Form digunakan untuk menginput data product dan detail product pada aplikasi yang akan ditampilkan di halaman utama
+    1. **Membuat file baru -> forms.py pada di dalam folder main** Form ini digunakan untuk dapat menerima data produk baru. Pada bagian fields disesuaikan dengan informasi product yang ingin di input dan ditampilkan, saya mengisi dengan -> fields = ["menu", "amount", "description", "price", "category"] karena saya ingin memiliki product yang berisi detail menu, jumlah, deskripsi, harga, dan kategori
+    2. **Dalam file views.py di folder main**
+        2.1**Mengimpor beberapa hal pada file views.py dalam folder main** yaitu:
+        from django.http import HttpResponseRedirect
+        from main.forms import ProductForm
+        from django.urls import reverse
+        2.2 Lalu selanjutnya **buat fungsi baru -> create_product** yang menerima parameter request, fungsi ini digunakan untuk menghasilkan form yang dapat **menambahkan data secara otomatis** ketika data di submit
+        2.3 **Ubah fungsi show_main**
+        Tambahkan -> products = Product.objects.all() setelah def show_main & 'products': products dalam context. Product.objects.all() digunakan untuk mengambil seluruh object product yang disimpan dalam database
+    3. **Buka urls.py pada folder main**
+        3.1 import fungsi create_product yang sudah dibuat pada tahap 2.2
+        3.2 Menambahkan path url ke 'urlpatterns' untuk mengakses fungsi yang telah di-import dengan code -> path('create-product', create_product, name='create_product'),
+    4. **Buat file create_product.html** pada direktori main/templates, file ini dibuat dengan tujuan untuk membuat halaman "Add New Product" yang digunakan untuk membuat form penambahan produk baru
+    5. **Edit file main.html**, pengeditan ini dilakukan dengan tujuan untuk menampilkan data produk (setelah diinput) dalam bentuk table serta tombol "Add New Product" yang ada dibawahnya (jika ditekan akan menuju/direct ke halaman form)
+
+    **Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.**
+    **HTML**
+        Untuk fungsi views dalam format HTML sudah dilakukan pada tugas 2 dimana kita melakukan edit pada **views.py di folder main** dengan menambahkan -> from django.shortcuts import render dan membuat fungsi show_main yang diberi return function yaitu -> return render(request, "main.html", context)
+        request merupakan objek permintaan HTTP yang dikirim pengguna, main.html merupakan file untuk render tampila, context merupakan dict yang berisi data yang diteruskan ke tampilan
+
+    **XML**
+        1. **Membuka file views.py di folder main**
+            1.1 **Mengimport *HttpResponse* dan *Serializer*** pada bagian atas file
+            1.2 **Membuat fungsi show_xml** yang menerima parameter *request* dan didalamnya terdapat variabel yang menyimpan hasil query seluruh data dalam product, code:
+            def show_xml(request):
+                data = Product.objects.all()
+            1.3 **Menambah return function** berupa *HttpResponse* yang berisi data hasil query, code:
+            return HttpResponse(serializers serialize("xml", data), content_type="application/xml")
+
+    **JSON**
+        1. **Membuka file views.py di folder main**
+            1.1 **Membuat fungsi show_json** yang menerima parameter *request* dan didalamnya terdapat variabel yang menyimpan hasil query seluruh data dalam product, code:
+            def show_json(request):
+                data = Product.objects.all()
+            1.2 **Menambah return function** berupa *HttpResponse* yang berisi data hasil query, code:
+            return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+    **XML by ID**
+        1. **Membuka file views.py di folder main**
+            1.1 **Membuat fungsi show_xml_by_id** yang menerima parameter *request* dan id didalamnya terdapat variabel yang menyimpan hasil query dari data dengan id tertentu dalam product, code:
+            def show_xml_by_id(request, id):
+                data = Product.objects.filter(pk=id)
+            1.2 **Menambah return function** berupa *HttpResponse* yang berisi parameter data hasil query dan parameter *content_type* dengan value , "application/xml" code:
+            return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+    **JSON by ID**
+        1. **Membuka file views.py di folder main**
+            1.1 **Membuat fungsi show_json_by_id** yang menerima parameter *request* dan id didalamnya terdapat variabel yang menyimpan hasil query dari data dengan id tertentu dalam product, code:
+            def show_json_by_id(request, id):
+                data = Product.objects.filter(pk=id)
+            1.2 **Menambah return function** berupa *HttpResponse* yang berisi parameter data hasil query dan parameter *content_type* dengan value , "application/json" code:
+            return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+    **Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.**
+    1. **Membuka file urls.py yang ada dalam folder main** dan impor fungsi path dengan -> from django.urls import path
+        1.1 **Routing HTML**
+            -  **Import fungsi yang sudah dibuat** yaitu code "from main.views import show_main"
+            - **Tambahkan path kedalam 'urlpatterns'** dengan -> path('', show_main, name='show_main'),
+            Hal ini dilakukan guna mengakses fungsi yang sudah diimpor
+        1.2 **Routing XML**
+            - **Import fungsi yang sudah dibuat** yaitu code sebelumnya ditambahkan 'show_xml' "from main.views import show_main, create_product" **menjadi** "from main.views import show_main, create_product, **show_xml**"
+            - **Menambahkan path url kedalam 'urlpatterns'**, hal ini dilakukan guna mengakses fungsi yang sudah diimpor, code:
+            path('xml/', show_xml, name='show_xml'), 
+
+        1.3 **Routing JSON**
+            - **Import fungsi yang sudah dibuat** yaitu code sebelumnya ditambahkan 'show_json'"from main.views import show_main, create_product, show_xml" **menjadi** "from main.views import show_main, create_product, show_xml, **show_json**" 
+            - **Menambahkan path url kedalam 'urlpatterns'**, hal ini dilakukan guna mengakses fungsi yang sudah diimpor, code:
+            path('json/', show_json, name='show_json'), 
+
+        1.4 **Routing XML by ID**
+            - **Import fungsi yang sudah dibuat** yaitu code sebelumnya ditambahkan 'show_xml_by_id'"from main.views import show_main, create_product, show_xml, show_json" **menjadi** "from main.views import show_main, create_product, show_xml, show_json, **show_xml_by_id**" 
+            - **Menambahkan path url kedalam 'urlpatterns'**, hal ini dilakukan guna mengakses fungsi yang sudah diimpor, code:
+            path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+
+        1.5 **Routing JSON by ID**
+            - **Import fungsi yang sudah dibuat** yaitu code sebelumnya ditambahkan 'show_json_by_id'"from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id" **menjadi** "from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, **show_json_by_id**" 
+            - **Menambahkan path url kedalam 'urlpatterns'**, hal ini dilakukan guna mengakses fungsi yang sudah diimpor, code:
+            path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),
+
+5. **Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.**
+    **HTML**
+    ![This is an image](/html_postman_2206829023_RahidaSyafaNurdya.png)
+
+    **XML**
+    ![This is an image](/xml_postman_2206829023_RahidaSyafaNurdya.png)
+
+    **JSON**
+    ![This is an image](/json_postman_2206829023_RahidaSyafaNurdya.png)
+
+    **XML by ID**
+    ![This is an image](/xml_by_id_postman_2206829023_RahidaSyafaNurdya.png)
+
+    **JSON by ID**
+    ![This is an image](/json_by_id_postman_2206829023_RahidaSyafaNurdya.png)
