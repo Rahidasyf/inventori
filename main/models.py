@@ -12,3 +12,4 @@ class Product(models.Model):
     price = models.CharField(max_length=255, default='')
     category = models.TextField()
     date_added = models.DateField(auto_now=True, null = True)
+    image = models.CharField(max_length=255, default ='')

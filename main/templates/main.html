@@ -1,91 +1,120 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <title>Menu Nona's Sweet Creation</title>
-            <h3>Name: </h3>
-            <p>{{name}}<p>
-            <h3>Class: </h3>
-            <p>{{kelas}}<p>
-    </head>
-    <h1>Nona's Sweet Creations</h1>
-    <body>
-        <table border="1">
-            <tr>
-                <th colspan="1" bgcolor="#E6896B">The Sweet Creations</th>
-            </tr>
-            <tr>
-                <td rowspan="1">
-                    <img src="https://static.vecteezy.com/system/resources/previews/024/501/667/non_2x/jajan-tampah-assorted-colorful-indonesian-traditional-cakes-served-during-festivities-photo.jpg" width="200" />
-                </td>
-            </tr>
-        </table>
-    </body>
-    <h5>Item Name: </h5>
-    <p>{{menu}}<p>
-    <h5>Stock Amount: </h5>
-    <p>{{amount}}<p>
-    <h5>Description: </h5>
-    <p>{{description}}<p>
-    <h5>Price: </h5>
-    <p>{{price}}<p>
-    <h5>Category: </h5>
-    <p>{{category}}<p>
-    </html>
+{% block meta %}
+    <title>Main</title>
+    <style>
+        body {
+        background: linear-gradient(to bottom, #D6CC99, #445D48); /* Change this to your desired color */
+        }
+        .waves-effect.waves-light.btn {
+            background-color: #84c983; /* Change this to your desired color */
+            color: white; /* Change this to the appropriate text color for the new background color */
+        }
+        .card {
+        width: 400px; /* Change this to your desired width */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        }
 
-    <table>
-        <tr>
-            <th>Item Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Stock Amount</th>
-            <th>Date Added</th>
-        </tr>
-    
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
-    
+        .card-image img {
+            width: 50px; /* Change this to your desired width */
+        }
+        .center-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px; /* Adjust the margin to your liking */
+        }
+    </style>
+{% endblock meta %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Nona's Sweet Creation</title>
+    <style>
+        /* Styles for the navigation bar */
+        .navbar {
+            background-color: #79917d; /* Change this to your desired color */
+            color: white; /* Change this to the appropriate text color for the new background color */
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white; /* Change this to the desired text color for the navigation links */
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .center-align {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <img src="https://cdn-icons-png.flaticon.com/512/4260/4260803.png?ga=GA1.1.2106960459.1695797182" width="50" height="50">
+        <a href="#">Name: {{name}}</a>
+        <a href="#">Class: {{kelas}}</a>
+        <a href="{% url 'main:logout' %}">
+            <button style="background-color: #84c983; color: #fff; padding: 5px 15px; border: none; border-radius: 5px;">
+                Logout
+            </button>
+        </a>
+    </div>
+</body>
+<h1 class="center-align">Nona's Sweet Creations</h1>
+<body>
+    <div class="row">
         {% for product in products %}
-            <tr>
-                <td>{{product.menu}}</td>
-                <td>{{product.description}}</td>
-                <td>{{product.category}}</td>
-                <td>{{product.price}}</td>
-                <td>
-                <a href="{% url 'main:decrease' product.id %}">
-                    <button>-</button>
-                </a>
-                {{product.amount}}
-                <a href="{% url 'main:increase' product.id %}">
-                    <button>+</button>
-                </a>
-                </td>
-                <td>{{product.date_added}}</td>
-                <td>
-                    <a href="{% url 'main:delete' product.id %}">
-                        <button>delete</button>
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{ product.image }}" width="75" />
+                </div>
+                <div class="card-content">
+                    <span class="card-title">{{ product.menu }}</span>
+                    <p>{{ product.description }}</p>
+                    <p>Category: {{ product.category }}</p>
+                    <p>Price: {{ product.price }}</p>
+                    <p>Stock Amount: {{ product.amount }}</p>
+                    <p>Date Added: {{ product.date_added }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="{% url 'main:decrease' product.id %}">
+                        <button class="waves-effect waves-light btn">-</button>
                     </a>
-                </td>
-            </tr>
+                    <a href="{% url 'main:increase' product.id %}">
+                        <button class="waves-effect waves-light btn">+</button>
+                    </a>
+                    <a href="{% url 'main:edit_product' product.id %}">
+                        <button class="waves-effect waves-light btn">Edit</button>
+                    </a>
+                    <a href="{% url 'main:delete' product.id %}">
+                        <button class="waves-effect waves-light btn">Delete</button>
+                    </a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </table>
-    
-    <br />
-    
+    </div>
+</body>
+</html>
+
+<div class="center-button">
     <a href="{% url 'main:create_product' %}">
-        <button>
+        <button class="waves-effect waves-light btn">
             Add New Product
         </button>
     </a>
+</div>
 
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
+<!-- <a href="{% url 'main:logout' %}">
+    <button class="waves-effect waves-light btn">
+        Logout
+    </button>
+</a> -->
 
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
-
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}

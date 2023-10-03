@@ -531,3 +531,182 @@ Dalam penggunaannya, form POST digunakan untuk *mengirim data yang bersifat sens
     **Menampilkan cookie**
     - Untuk melihat data cookie last_login, kita perlu akses fitur inspect element dan buka bagian Application -> Storage. Pada bagian cookies kita dapat melihat data cookies yang tersedia selain last_login seperti sessionid dam csrftoken
     - Jika kita logout maka riwayat cookie kita yang sebelumnya hilang.
+
+**TUGAS 5**
+
+**1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.**
+CSS Selector digunakan untuk memilih dan menata HTML element berdasarkan atributnya seperti nametag, class, atau ID. HTML element dapat dipilih berdasarkan Element selector (tanpa awalana # atau .), Class selector (dengan awalan .), dan ID selector (dengan awalan #). Yang akan kita bahas adalah element selector.
+
+Element Selector = Selector yang digunakan untuk memilih semua elemen HTML dengan tipe tertentu/berdasarkan jenis elemennya, seperti semua elemen <p>. Selector ini merupakan selector paling dasar dan sering digunakan untuk menerapkan gaya pada semua elemen dengan tipe tertentu pada sebuah halaman.
+Ada beberapa jenis element selector yang dapat digunakan, yaitu:
+    - **Element Selector Tag**
+    Kapan Digunakan: 
+    Selector elemen dengan tag digunakan ketika kita ingin mengubah style dari elemen-elemen tertentu pada suatu jenis elemen. Dengan element selector semua elemen dengan jenis yang sama akan terpengaruh. Karena semua elemen akan terpengaruh maka disarankan untuk menggunakan pendekatan yang lebih spesifik agar tidak mengubah tampilan keseluruhan elemen yang sama. 
+    Manfaat:
+    Selector elemen memilih semua elemen dengan tag HTML tertentu sehingga dapat mempersingkat kode tanpa harus melakukan kustomisasi ulang untuk elemen yang sama (jika ingin diseragamkan). 
+    Contoh:
+    p {
+    color: blue;
+    }
+    Misal memiliki struktur HTML
+    <div>Helo apa kabar, saya sedang belajar CSS</div>
+    <p>Materi yang sedang kita bahas adalah Selektor</p>
+    <div>Saat ini sedang dibahas tentang selektor tag</div>
+    <p>Selektor tag adalah selektor untuk memilih elemen HTML berdasarkan nama tagnya</p>
+    Maka hasilnya semua elemen <p> akan berwarna biru. 
+    - **Selector Pseudo Element** 
+    Kapan Digunakan:
+    Digunakan ketika kita ingin menargetkan/merubah tampilan pada bagian spesifik dari suatu elemen, seperti ingin menargetkan huruf pertama atau baris pertama dari sebuah teks. Karena pseudo-element ini merupakan sebuah selector untuk memilih elemen semu.
+    Manfaat:
+    Selector pseudo-element digunakan untuk memilih bagian khusus dari suatu elemen. Sehingga dengan selector ini memungkinkan kita untuk memberikan style berbeda pada bagian tertentu.
+    Contoh:
+    p::first-letter {
+    font-size: 24px;
+    color: red;
+    }
+    Maka hasilnya adalah huruf pertama pada paragraf memiliki font dengan size 24 dan warna merah. 
+
+**2. Jelaskan HTML5 Tag yang kamu ketahui.**
+HTML5 merupakan versi terbaru dari HTML (Hypertext Markup Language) dengan spesifikasi terbaru, dengan tujuan:
+    - Mendorong markah semantik yang bermakna
+    - Memisahkan desain dari konten
+    - Mempromosikan aksesibilitas dan daya tanggap desain
+    - Mengurangi tumpang tindih antara HTML, CSS, dan JavaScript
+    - Mendukung pengalaman media yang kaya sekaligus mengilahkan kebutuhan plugin seperti Flash atau Java
+Pembaruan di HTML5 ini antara lain:
+**Elemen semantik baru:**
+    - *<nav>*
+    Tag <nav> digunakan untuk mengelompokkan elemen-elemen yang berisi tautan navigasi atau menu, seperti menu utama, menu samping, atau tautan ke halaman lain dalam situs web.
+    - *<header>*
+    Tag ini digunakan untuk mendefinisikan bagian atas dari halaman web atau bagian dari elemen yang mengandung informasi pengenalan atau judul, seperti logo, judul situs, dan menu navigasi utama.
+    - *<footer>*
+    Tag ini digunakan untuk mendefinisikan bagian bawah dari halaman web atau bagian yang berisi informasi seperti hak cipta, tautan ke halaman lain, atau informasi kontak.
+    - *<article>*
+    Tag ini digunakan untuk mengelompokkan konten yang berdiri sendiri, seperti berita, posting blog, atau artikel. Artikel-artikel ini dapat berdiri sendiri dan dapat digunakan di berbagai halaman atau situs web.
+    - *<section>*
+    Tag <section> digunakan untuk mengelompokkan konten yang terkait dalam satu bagian atau topik tertentu dalam halaman web. Ini membantu dalam pengorganisasian dan pemahaman struktur konten.
+**Atribut baru dari elemen form:**
+    - *<datalist>*
+    Elemen <datalist> digunakan dalam hubungannya dengan elemen input tipe teks (<input type="text">) untuk menyediakan daftar pilihan yang dapat dipilih oleh pengguna saat mereka memasukkan teks.
+    - *<keygen> (Sudah tidak direkomendasi)*
+    Elemen <keygen> digunakan untuk membuat pasangan kunci publik dan pribadi yang biasanya digunakan untuk keperluan otentikasi dalam formulir web.
+    Namun, elemen <keygen> sudah tidak direkomendasikan dalam HTML5 dan tidak didukung oleh banyak browser modern. Sebagai gantinya, penggunaan teknologi otentikasi yang lebih kuat, seperti OAuth atau SSL, disarankan.
+    - *<output>*
+    Elemen <output> digunakan untuk menampilkan hasil perhitungan atau hasil operasi JavaScript dalam halaman web.
+**Input Type yang baru:**
+    - *<input type="datetime">*
+    Input jenis ini memungkinkan pengguna untuk memilih tanggal dan waktu, dan formatnya dapat bervariasi tergantung pada browser. Anda dapat menggunakan atribut step untuk mengatur interval waktu.
+    - *<input type="number">*
+    Jenis input ini digunakan untuk memasukkan angka, baik bilangan bulat maupun desimal. Anda dapat menggunakan atribut min, max, dan step untuk mengatur nilai minimum, maksimum, dan langkah penambahan.
+    - *<input type="email">*
+    Input jenis ini dirancang khusus untuk memasukkan alamat email. Browser biasanya akan memvalidasi alamat email yang dimasukkan oleh pengguna.
+    - *<input type="month">*
+    Input ini memungkinkan pengguna untuk memilih bulan dan tahun, berguna untuk entri tanggal dengan tingkat presisi bulan dan tahun.
+    - *<input type="url">*
+    Jenis input ini digunakan untuk memasukkan URL. Browser akan memvalidasi apakah input yang dimasukkan memiliki format URL yang benar.
+    - *<input type="color">*
+    Input jenis ini memungkinkan pengguna untuk memilih warna menggunakan pemilih warna yang disediakan oleh browser. Nilai yang dihasilkan biasanya berupa kode warna hexadecimal.
+**Input Atribut Baru:**
+    - *required*
+    Atribut required digunakan untuk menandai bahwa sebuah elemen input harus diisi sebelum pengguna dapat mengirimkan formulir. Jika elemen input ini tidak diisi, browser akan mencegah pengiriman formulir dan menampilkan pesan kesalahan bawaan.
+    - *placeholder*
+    Atribut placeholder digunakan untuk menyediakan teks panduan atau contoh di dalam elemen input. Ini membantu pengguna memahami jenis data yang diharapkan dalam input tersebut.
+    - *autofocus*
+    Atribut autofocus digunakan untuk memberikan fokus otomatis pada elemen input ketika halaman web dimuat. Ini memungkinkan pengguna langsung memasukkan data tanpa harus mengklik elemen input terlebih dahulu.
+**Grafik Element Baru:**
+    - *<canvas>*
+    Tag <canvas> digunakan untuk membuat gambar, grafik, atau animasi menggunakan JavaScript. Ini memberikan kemampuan untuk menggambar grafis secara dinamis di dalam halaman web.
+    - *<svg>*
+    Elemen <svg> adalah elemen utama dalam SVG dan digunakan untuk mengelompokkan semua elemen SVG lainnya. Ini berfungsi sebagai wadah untuk grafik vektor Anda.
+**Multimedia element baru:**
+    - *<audio>*
+    Tag <audio> digunakan untuk menyisipkan pemutaran audio. Ini memungkinkan situs web untuk menyediakan konten multimedia langsung.
+    - *<video>*
+    Tag <video> digunakan untuk menyisipkan pemutaran video dalam halaman web. Ini memungkinkan situs web untuk menyediakan konten multimedia langsung.
+
+**3. Jelaskan perbedaan antara margin dan padding.**
+Margin dan Padding merupakan dua properti dalam CSS yang digunakan untuk mengatur ruang dan jarak antar elemen HTML dan tepi kotak yang mengelilinginya. Margin dan Padding memiliki fungsi yang berbeda dalam tata letak elemen. 
+    - *Margin*
+    Margin - Membersihkan area di luar batas. Margin bersifat transparan
+    Margin merupakan sisi luar dari element yang mengatur jarak antara elemen HTML dan tepi kotak yang mengelilinginya. Margin digunakan untuk mengatur jarak antara elemen HTML dengan elemen di sekitarnya. Margin dapat diberikan di semua sisi elemen HTML atau pada sisi tertentu saja. Margin juga dapat digunakan untuk membuat ruang kosong di sekitar elemen HTML. 
+    Margin atas ditulis dengan **margin-top**;
+    Margin bawah ditulis dengan **margin-bottom**;
+    Margin kiri ditulis dengan **margin-left**;
+    Margin kanan ditulis dengan **margin-kanan**;
+    Margin keseluruhan ditulis dengan **margin**.
+    Contoh: margin: 15px (memberikan margin 15 piksel pada semua sisi elemen)
+    - *Padding*
+    Padding - Membersihkan area di sekeliling konten. Padding bersifat transparan
+    Padding merupakan sisi dalam dari sebuah element yang mengatur jarak antara elemen HTML dan konten di dalamnya. Padding digunakan untuk mengatur jarak antara konten elemen HTML dengan tepi kotak yang mengelilinginya. Padding dapat diberikan pada semua sisi elemen HTML atau pada sisi tertentu. Padding dapat digunakan untuk membuat ruang kosong dalam elemen html. 
+    Padding atas ditulis dengan **padding-top**;
+    Padding bawah ditulis dengan **padding-bottom**;
+    Padding kiri ditulis dengan **padding-left**;
+    Padding kanan ditulis dengan **padding-kanan**;
+    Padding keseluruhan ditulis dengan **padding**.
+Perbedaan utama antara margin dan padding adalah bahwa margin mengatur jarak antara elemen HTML dengan elemen lain di sekitarnya, sedangkan padding mengatur jarak antara konten elemen HTML dengan tepi kotak yang mengelilinginya. Margin dan padding juga dapat digunakan bersama-sama untuk mengatur tata letak elemen HTML pada halaman web.
+
+**4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+Tailwind CSS dan Bootstrap digunakan untuk membantu mengatur User Interface untuk meningkatkan waktu pengembangan dan pengalaman user. 
+    **Bootstrap**
+    Bpotstrap jauh lebih tua dan telah mengalami banyak perubahan selama bertahun-tahun. Bootsrap menawarkan komponen responsif berbasis mobile yang telah di styling sebelumnya untuk membuat halaman website dengan cepat. Bootsrap dibuat untuk pengembangan komponene secara menyeluruh untuk penggunaan situs
+        - **Ukuran File**
+        Ukuran file jauh lebih besar. Bootsrap memiliki komponen yang telah dibangun sebelumnya yang membuat ukuran file CSS-nya lebih besar. Bootsrap memerlukan beberapa file untuk mengakses fungsionalitas penuhnya karena bootsrap menyediakan banyak fitur dan komponen (itu sebabnya bootsrap memiliki ukuran file yang jauh lebih besar)
+        - **Fokus**
+        Bootsrap befokus pada pengembangan komponen secara keseluruhan
+        - **Kustomisasi**
+        Bootstrap memiliki tema yang dapat disesuaikan dan beberapa opsi kustomisasi. Kita dapat menyesuaikan tampilan dengan memberi gambar, mengganti warna, mengatur variabel, dan mengabaikan komponen tertentu. Bootsrap memerlukan lebih banyak penyesuaian melalui file CSS khusus
+        - **Kesesuaian**
+        Bootsrap lebih cocok digunakan untuk proyek besar yang memerlukan banyak komponen dan fitur
+        - **Pendekatan Desain**
+        Bootsrap mendekati desain dengan komponen yang telah dibangun sebelumnya dan kelas CSS yang sudah ada. Sehingga kita dapat menggabungkan komponen seperti navigasi, jumbotron, dan tombol dengan mudah dalam proyek. Bootstrap menawarkan set class CSS dan komponen yang telah dirancang sebelumnya dengan tampilan yang cukup terstruktur dan konsisten. 
+        - **Ekosistem Pengembangan**
+        Bootstrap memiliki ekosistem yang sangat kuat dengan dokumentasi yang kaya, banyak tema dan template yang tersedia, serta dukungan komunitas yang luas. Ini membuatnya mudah untuk memulai dan mendapatkan sumber daya yang diperlukan.
+        - **Fleksibilitas**
+        Bootstrap menawarkan kerangka kerja yang relatif terstruktur dengan banyak komponen yang telah dirancang sebelumnya. Ini memberikan stabilitas dan kemudahan penggunaan, tetapi mungkin memiliki batasan dalam hal fleksibilitas desain yang unik.
+    **Tailwind CSS**
+    Tailwind merupakan framework yang lebih baru dan lebih ringkas dibandingkan bootstrap. Hal ini membuat waktu pemuatannya lebih cepat. Tetapi tailwind belum sebanding dengan bootstrap karena masih dalam tahap pengembangan. Tailwind dibuat untuk menghasilkan elemen UI yang fungsional, rapi dan fleksibel
+        - **Ukuran File**
+        Tailwind ebih ringkas karena hanya menyediakan kelas utilitas yang dapat digunakan untuk membangun tampilan web (hanya menggunakan kelas yang dibutuhkan). Dengan hal ini dapat membuat proyek lebih ringan. 
+        - **Fokus**
+        Tailwind dibuat untuk menghasilkan elemen UI yang fungsional, rapi, dan fleksibel
+        - **Kustomisasi**
+        Tailwind memungkinkan pengguna untuk menyesuaikan tampilan web dengan mudah menggunakan kelas utilitas. Tailwind sangat fleksibel dalam kustomisasi, kita dapat mengubah setiap aspek tampilan dengan mengedit konfigurasi tailwind dan mengganti/menambah kelas-kelas utilitas sesuai dengan kebutuhan.
+        - **Kesesuaian**
+        Tailwind lebih cocok digunakan untuk proyek kecil hingga menengah yang memerlukan tampilan web yang cepat dan mudah disesuaikan
+        - **Pendekatan Desain**
+        Tailwind mengadopsi pendekatan utility-first dimana kita membangun desain dengan menggabungkan kelas-kelas yang telah disediakan oleh tailwind css. Kita menentukan tampilan elemen dengan menggabungkan kelas-kelas di dalam HTML. Memberikan kebebasan kreatif yang lebih besar dan memungkinkan penggunaan class yang sangat spesifik.
+        - **Ekosistem Pengembangan**
+        Tailwind juga memiliki ekosistem yang berkembang pesat dengan dokumentasi yang baik dan komunitas yang aktif, kita dapat menemukan banyak sumber daya, plugin, dan integrasi dengan kerangka kerja JavaScript seperti React atau Vue.
+        - **Fleksibilitas**
+        Tailwind memberikan fleksibilitas yang lebih besar dengan pendekatan "utility-first" yang memungkinkan kita membangun desain yang sangat kustom sesuai kebutuhan. kita memiliki kendali penuh atas gaya dan tata letak dengan kombinasi class utilitas yang spesifik.
+    **Kapan sebaiknya menggunakan Bootsrap**
+        - Sebaiknya kita menggunakan bootstrap jika kita memerlukan pembuatan cepat situs web dan menginginkan prototype terlihat profesional tanpa harus melakukan banyak kustomisasi
+        - Bootsrap sebaiknya digunakan untuk proyek besar yang memerlukan banyak komponen dan fitur, serta memerlukan tampilan web yang komples
+        - Bootstrap cocok digunakan oleh pengembang yang sudah terbiasa dengan framework CSS
+        - Cocok untuk proyek dengan desain tradisional yang membutuhkan kerangka kerja yang stabil dan mudah digunakan, serta tidak ingin terlalu dalam dalam mengedit gaya CSS
+    **Kapan sebaiknya menggunakan Tailwind CSS**
+        - Sebaiknya kita menggunakan tailwind css jika kita ingin memiliki kendali yang lebih besar atas desain dan tampilan elemen HTML
+        - Cocok untuk pengembangan web modern yang membutuhkan desain yang sangat fleksibel dan dapat disesuaikan
+        - Tailwind sebaiknya digunakan untuk proyek kecil hingga menengah yang memerlukan tampilan web yang cepat dan mudah disesuaikan. 
+        - Tailwind cocok digunakan oleh pengembang yang ingin membangun tampilan web dengan cepat dan mudah menggunakan kelas utilitas
+
+**5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+    - **Halaman Login**
+    Untuk halaman login saya menggunakan referensi CSS dari codepen dengan link: *https://codepen.io/mamislimen/pen/jOwwLvy*
+    Dengan kustomisasi pada warna dan layout pada bagian sign up dengan memberikan logo. Untuk bagian signup jika pengguna menekan button sign up langsung akan diarahkan ke halaman register menggunakan *<form action="{% url 'main:register' %}" method="get">*. Sedangkan untuk bagian login jika pengguna menekan button login maka akan langsung masuk ke halaman main. 
+    - **Register**
+    Untuk halaman register saya menggunakan referensi CSS dari bootsrap dengan link: *https://bbbootstrap.com/snippets/bootstrap-glowing-login-form-61831104*
+    Dengan kustomisasi pada background, warna, size dan layout. Untuk bagian signup ini mirip dengan sebelumnya dimana tetap implementasi sesuai template hanya dipindahkan saja dengan tampilan css. Jika pengguna berhasil signup maka akan langsung mengarah ke halaman login (kembali lagi).
+    - **Create Product**
+    Untuk halaman buat produk baru menggunakan referensi CSS dari freefrontend dengan link: *https://codepen.io/Metty/pen/NWpzexj*
+    Dengan kustomisasi background dan font. Untuk tampilannya ini berupa default sesuai dengan yang sudah pernah dibuat sebelumnya.
+    Jika berhasil menambahkan produk maka akan kembali ke halaman main yang menampilkan produk yang berhasil ditambahkan
+    - **Edit Product**
+    Sama seperti halaman buat produk baru, halaman edit product menggunakan referensi CSS dari freefrontend dengan link: *https://codepen.io/Metty/pen/NWpzexj*
+    Dengan kustomisasi background dan font. Untuk tampilannya ini berupa default sesuai dengan yang sudah pernah dibuat sebelumnya.
+    Jika berhasil edit produk maka akan kembali ke halaman main yang menampilkan produk yang berhasil diedit
+
+Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
+    - **Main**
+    Halaman main menggunakan navbar dan juga card, tampilan ini dibuat menjadi lebih interaktif. Navbar disini saya tampilkan icon dari toko saya, nama pengguna, kelas, dan tombol logout. Card disini digunakan untuk menampilkan produk-produk yang berhasil ditambahkan dan ada tombol + untuk menambah amount, tombol - untuk mengurangi amount, tombol delete, untuk menghapus produk, dan tombol edit untuk edit produk yang nantinya akan langsung diarahkan ke halaman edit product. Setiap card memiliki komponen detail product dan keempat tombol tersebut. Kustomisasi halaman background juga dilakukan, selain itu ada button add new product dipaling bawah jika pengguna ingin menambahkan product dan akan langsung mengarahkan ke halaman create product. 

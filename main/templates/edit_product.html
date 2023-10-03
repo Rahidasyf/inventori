@@ -44,18 +44,18 @@
         }
     </style>
 {% endblock meta %}
-
+{% load static %}
 {% block content %}
 
 <div class="form-container">
-    <h1><span>Add New Product</span></h1>
+    <h1><span>EditProduct</span></h1>
     <form method="POST">
         {% csrf_token %}
         <div>
             {{ form.as_p }}
         </div>
         <div>
-            <input type="submit" value="Add Product"/>
+            <input type="submit" value="Edit Product"/>
         </div>
     </form>
 </div>
