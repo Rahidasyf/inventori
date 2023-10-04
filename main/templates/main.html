@@ -9,11 +9,12 @@
         .waves-effect.waves-light.btn {
             background-color: #84c983; /* Change this to your desired color */
             color: white; /* Change this to the appropriate text color for the new background color */
+            border-radius: 15px;
         }
         .card {
         width: 400px; /* Change this to your desired width */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
+        border-radius: 50px;
         }
 
         .card-image img {
@@ -24,23 +25,24 @@
             justify-content: center;
             align-items: center;
             margin-top: 20px; /* Adjust the margin to your liking */
+            margin-bottom: 50px;
+            border-radius: 15px;
         }
-    </style>
-{% endblock meta %}
-{% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Menu Nona's Sweet Creation</title>
-    <style>
+        .last-item .card {
+            background-color: #28342a; /* Change this to your desired color */
+            color: white;
+        }
+
         /* Styles for the navigation bar */
         .navbar {
-            background-color: #79917d; /* Change this to your desired color */
+            background-color: #28342a; /* Change this to your desired color */
             color: white; /* Change this to the appropriate text color for the new background color */
             padding: 10px;
         }
 
         .navbar a {
+            font-family: "Monaco", monospace; /* Menggunakan jenis font Poppins sans-serif */
+            font-size: 20px; /* Ukuran font untuk "Name" dan "Class" */
             color: white; /* Change this to the desired text color for the navigation links */
             margin-right: 10px;
             text-decoration: none;
@@ -50,6 +52,12 @@
             text-align: center;
         }
     </style>
+{% endblock meta %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Nona's Sweet Creation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
@@ -57,8 +65,9 @@
         <img src="https://cdn-icons-png.flaticon.com/512/4260/4260803.png?ga=GA1.1.2106960459.1695797182" width="50" height="50">
         <a href="#">Name: {{name}}</a>
         <a href="#">Class: {{kelas}}</a>
+        <a>Sesi terakhir login: {{ last_login }}</a>
         <a href="{% url 'main:logout' %}">
-            <button style="background-color: #84c983; color: #fff; padding: 5px 15px; border: none; border-radius: 5px;">
+            <button style="background-color: #28342a; color: #fff; padding: 5px 15px; border: none; border-radius: 15px;">
                 Logout
             </button>
         </a>
@@ -68,7 +77,7 @@
 <body>
     <div class="row">
         {% for product in products %}
-        <div class="col s12 m6 l4">
+        <div class="col s12 m6 l4 {% if forloop.last %}last-item{% endif %}">
             <div class="card">
                 <div class="card-image">
                     <img src="{{ product.image }}" width="75" />
@@ -115,6 +124,4 @@
         Logout
     </button>
 </a> -->
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
