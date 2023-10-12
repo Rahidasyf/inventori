@@ -710,3 +710,64 @@ Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
 Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.
     - **Main**
     Halaman main menggunakan navbar dan juga card, tampilan ini dibuat menjadi lebih interaktif. Navbar disini saya tampilkan icon dari toko saya, nama pengguna, kelas, dan tombol logout. Card disini digunakan untuk menampilkan produk-produk yang berhasil ditambahkan dan ada tombol + untuk menambah amount, tombol - untuk mengurangi amount, tombol delete, untuk menghapus produk, dan tombol edit untuk edit produk yang nantinya akan langsung diarahkan ke halaman edit product. Setiap card memiliki komponen detail product dan keempat tombol tersebut. Kustomisasi halaman background juga dilakukan, selain itu ada button add new product dipaling bawah jika pengguna ingin menambahkan product dan akan langsung mengarahkan ke halaman create product. 
+
+
+**TUGAS 6**
+**1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.**
+    **Asynchronous Programming**
+    = merupakan sebuah pendekatan programming yang tidak terikat pada input output (I/O) protocol. Asynchronous programming tidak melakukan pekerjaan secara old/style, dimana asynchronous programming melakukan pekerjaannya tanpa harus terikat dengan proses lain  (tanpa eksekusi baris program satu persatu secara hierarki) dan dapat berjalan secara independent.
+        - Dalam asynchronous programming, tugas-tugas dieksekusi secara independen, tanpa harus menunggu tugas sebelumnya selesai.
+        - Program dapat melanjutkan eksekusi tanpa harus menunggu tugas yang memerlukan waktu eksekusi lama selesai.
+        - Ini memungkinkan program untuk tetap responsif dan efisien, terutama dalam kasus yang melibatkan operasi I/O atau komunikasi jaringan.
+    **Synchronous Programming**
+    = merupakan sebuah pendekatan programming yang memiliki pendekatan old style. Task akan dieksekusi satu persatu sesuai dengan urutan dan priority task. Hal ini memiliki kekurangan pada waktu, dimana program akan memerlukan waktu eksekusi yang lebih lama karena masing-masing task harus menunggu task lain selesai untuk diproses terlebih dahulu. Tetapi, synchronous programming lebih mudah dibandingkan asynchronous programming.
+        - Dalam synchronous programming, tugas-tugas dieksekusi secara berurutan, satu demi satu, dalam urutan yang telah ditentukan.
+        - Ketika satu tugas sedang berjalan, program akan tetap menunggu hingga tugas tersebut selesai sebelum menjalankan tugas berikutnya.
+        - Ini adalah pendekatan yang lebih sederhana untuk mengelola aliran eksekusi program, tetapi dapat menyebabkan program menjadi lambat jika ada tugas yang memakan waktu lama.
+
+**2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.**
+    **Event-Driven**
+    = Event-driven dapat merespons tindakan pengguna seperti klik dan menekan tombol. Paradigma event-driven programming adalah pendekatan dalam pemrograman di mana program merespons kejadian atau peristiwa yang terjadi, seperti klik tombol, input pengguna, atau permintaan jaringan. Dalam paradigma ini, program tidak berjalan secara linier dari awal hingga akhir, tetapi merespons kejadian yang terjadi secara asynchronous. Event-Driven Programming adalah salah satu teknik pemogramman, yang konsep kerjanya tergantung dari kejadian atau event tertentu. Event-Driven programming juga bisa dibilang suatu paradigma pemrograman yang alur programnya ditentukan oleh suatu event/peristiwa yang merupakan keluaran atau tindakan pengguna atau bisa berupa pesan dari program lainnya.
+    Maksud dari paradigma event-driven programming adalah sebagai berikut:
+    *Respon terhadap Peristiwa:* Program yang dibuat dengan paradigma ini tidak hanya menjalankan instruksi secara berurutan, tetapi lebih fokus pada respon terhadap peristiwa yang terjadi dalam lingkungan eksekusinya.
+    *Event Listener:* Program akan memiliki event listeners atau penangan peristiwa yang akan dipicu ketika peristiwa tertentu terjadi. Event listeners ini akan menentukan tindakan atau fungsi apa yang harus dijalankan ketika peristiwa terjadi.
+    *Respons Dinamis:* Dengan paradigma ini, program dapat merespons secara dinamis terhadap tindakan pengguna, seperti mengklik tombol, mengisi formulir, atau menggerakkan mouse. Hal ini membuat interaksi antara program dan pengguna menjadi lebih responsif dan interaktif.
+    Contoh penerapan event-driven pada tugas ini adalah menggunakan AJAX untuk menambahkan item dimana ada tombol yang untuk menambah item dengan ajax yang ketika ditekan akan memanfaatkan event-driven untuk mengarahkan ke halaman tambah item. 
+    **AJAX GET untuk Pengambilan Data:**
+    - Ketika pengguna membuka halaman utama, Anda dapat menggunakan JavaScript untuk menambahkan event listener ke tombol atau elemen tertentu yang akan memicu permintaan AJAX GET ke server ketika pengguna mengkliknya. Misalnya, pengguna mengklik tombol "Muat Data".
+    - Event listener ini akan menangani peristiwa klik dan membuat permintaan AJAX GET ke URL yang sesuai (misalnya, "/get-items") untuk mengambil data dari server secara asinkron.- Ketika data tiba dari server dalam respon AJAX, Anda dapat mengupdate tabel atau daftar item di halaman web Anda tanpa harus memuat ulang halaman.
+    **AJAX POST untuk Menambahkan Item:**
+    - Ketika pengguna menekan tombol yang membuka modal untuk menambahkan item, Anda dapat menggunakan event-driven programming untuk memantau peristiwa klik tersebut.
+    - Ketika pengguna mengisi formulir dan mengklik tombol "Tambahkan Item", Anda dapat menggunakan AJAX POST untuk mengirim data item ke server tanpa memuat ulang halaman.
+    - Setelah data berhasil ditambahkan ke server, modal dapat ditutup dan formulir dapat dibersihkan dari data yang sudah dimasukkan.
+
+**3. Jelaskan penerapan asynchronous programming pada AJAX.**
+    Penerapan asynchronous programming pada AJAX adalah salah satu fitur utama dari teknik ini. AJAX memungkinkan penggunaan asynchronous programming untuk melakukan permintaan data ke server dan menangani responsnya tanpa harus melakukan reload halaman.
+    Dalam penerapan AJAX , ketika permintaan data dikirimkan ke server menggunakan metode seperti XMLHttpRequest atau fetch, proses tersebut berjalan secara asynchronous. Ini berarti bahwa program tidak akan terblokir saat menunggu respons dari server. Sebaliknya, program dapat melanjutkan eksekusi kode lainnya sambil menunggu respons dari server.
+    AJAX (Asynchronous JavaScript and XML) secara khusus dirancang untuk melakukan operasi secara asinkronus di dalam aplikasi web. Asynchronous programming pada AJAX memungkinkan aplikasi web Anda untuk melakukan berbagai operasi seperti mengambil data dari server, mengirim data ke server, atau mengubah tampilan halaman tanpa menghentikan eksekusi program utama atau memblokir antarmuka pengguna. AJAX menggunakan asynchronous data transfer (HTTP request) antara browser dan web server, yang memperbolehkan halaman web memanggil bit yang kecil atau seluruh informasi dari server.
+    Dengan menggunakan asynchronous programming pada AJAX, aplikasi web dapat tetap responsif dan interaktif, karena pengguna dapat melakukan tindakan lain sambil menunggu respons dari server. Hal ini memungkinkan pengembangan aplikasi web yang lebih baik dalam hal kinerja dan pengalaman pengguna.
+
+**4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.**
+Penerapan AJAX dengan menggunakan Fetch API dan jQuery adalah dua pendekatan yang berbeda dalam mengelola permintaan asinkron di dalam aplikasi web.
+    **Fetch Api:**
+    Fetch API pada javascript adalah kegiatan untuk meminta/request layanan ke endpoint/letak url yang akan menerima request pada website secara local maupun public, untuk mengambil response resource / sumber daya berupa data berformat json atau text yang biasa dilakukan programmer untuk membangun website yang membutuhkan data dari website lain ataupun website yang membutuhkan konsep microservice didalamnya. Fetch API merupakan metode baru untuk membuat request HTTP Asynchronous, mengambil dan mengirim data dengan cara yang lebih modern dan fleksibel. 
+    - Fetch API menggunakan Promises, sehingga memungkinkan Anda menggunakan .then() dan .catch() untuk menangani hasil permintaan dengan cara yang lebih bersih dan mudah dipahami.
+    - Lebih ringan dan membutuhkan lebih sedikit sumber daya daripada jQuery karena tidak ada perlu mengimpor atau memuat seluruh library jQuery.
+    - Secara alami berintegrasi dengan ekosistem JavaScript modern.
+    - *Lebih ringan:* Fetch API memiliki ukuran yang lebih kecil dibandingkan dengan library jQuery. Ini berarti penggunaan Fetch API dapat mengurangi beban unduhan pada aplikasi web.
+    - *Lebih modern:* Fetch API menggunakan Promise, yang merupakan konsep yang lebih modern dalam JavaScript untuk mengelola operasi asynchronous. Ini memudahkan pengelolaan permintaan dan respons.
+    - *Lebih fleksibel:* Fetch API memungkinkan penggunaan berbagai jenis data, seperti JSON, teks, blob, dan lainnya. Ini memberikan fleksibilitas dalam mengelola respons dari server.
+    **jQuery**
+    jQuery adalah library JavaScript yang populer yang telah lama digunakan untuk mengelola AJAX di berbagai proyek web. Itu memberikan abstraksi tingkat tinggi untuk berbagai operasi AJAX. jQuery memiliki banyak fitur, termasuk kemampuan untuk melakukan permintaan AJAX. 
+    - Mudah digunakan dan memiliki banyak fitur yang mempermudah penggunaan AJAX, seperti memanipulasi DOM dengan mudah.
+    - Mendukung berbagai jenis permintaan AJAX, termasuk GET, POST, PUT, DELETE, dan sebagainya.
+    - Memiliki sejarah panjang dalam pengembangan web dan banyak plugin dan dukungan komunitas yang tersedia.
+    - JQuery memiliki sebuah kelebihan, yaitu cross-compatibility dan kode yang sangat mature dari polyfillnya.
+    - *Kompatibilitas lintas browser:* jQuery dirancang untuk bekerja di berbagai browser yang berbeda, termasuk browser lama yang tidak mendukung Fetch API. Jadi, jika Anda perlu mendukung browser lama, jQuery dapat menjadi pilihan yang baik.
+    - *Kemudahan penggunaan:* jQuery menyediakan metode yang mudah digunakan untuk melakukan permintaan AJAX, seperti $.ajax() atau $.get(). Ini dapat mempercepat pengembangan aplikasi web dengan menyederhanakan sintaksis.
+
+Pilihan antara Fetch API dan jQuery tergantung pada kebutuhan dan preferensi pengembang. Jika ingin **mengoptimalkan ukuran aplikasi web** dan menggunakan konsep modern seperti Promise, Fetch API adalah pilihan yang baik. Namun, jika perlu **mendukung browser lama** atau lebih suka menggunakan library yang lebih lengkap, jQuery dapat menjadi pilihan yang baik. Jika **mengutamakan kinerja dan kecepatan**, Fetch API mungkin lebih unggul karena lebih ringan. Namun, perbedaan dalam kinerja mungkin tidak begitu signifikan dalam banyak kasus. Dalam banyak proyek modern, terutama yang berfokus pada pengembangan berbasis JavaScript, Fetch API sering menjadi pilihan yang lebih umum karena kesederhanaan dan integrasinya dengan JavaScript modern.
+
+Singkatnya, Fetch API dan jQuery adalah pilihan yang layak untuk mengimplementasikan AJAX dalam pengembangan web. Fetch adalah opsi yang lebih baru dan lebih cepat yang dibangun ke dalam peramban web modern, sedangkan jQuery adalah pustaka yang populer dan mapan dengan banyak fitur bawaan. Pilihan di antara keduanya pada akhirnya tergantung pada kebutuhan spesifik proyek dan preferensi pengembang.
+
+**5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**

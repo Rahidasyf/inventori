@@ -53,6 +53,7 @@
         }
     </style>
 {% endblock meta %}
+
 {% block content %}
 <!DOCTYPE html>
 <html>
@@ -60,6 +61,7 @@
     <title>Menu Nona's Sweet Creation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
+
 <body>
     <div class="navbar">
         <img src="https://cdn-icons-png.flaticon.com/512/4260/4260803.png?ga=GA1.1.2106960459.1695797182" width="50" height="50">
@@ -73,42 +75,14 @@
         </a>
     </div>
 </body>
+
 <h1 class="center-align">Nona's Sweet Creations</h1>
+
 <body>
-    <div class="row">
-        {% for product in products %}
-        <div class="col s12 m6 l4 {% if forloop.last %}last-item{% endif %}">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{ product.image }}" width="75" />
-                </div>
-                <div class="card-content">
-                    <span class="card-title">{{ product.menu }}</span>
-                    <p>{{ product.description }}</p>
-                    <p>Category: {{ product.category }}</p>
-                    <p>Price: {{ product.price }}</p>
-                    <p>Stock Amount: {{ product.amount }}</p>
-                    <p>Date Added: {{ product.date_added }}</p>
-                </div>
-                <div class="card-action">
-                    <a href="{% url 'main:decrease' product.id %}">
-                        <button class="waves-effect waves-light btn">-</button>
-                    </a>
-                    <a href="{% url 'main:increase' product.id %}">
-                        <button class="waves-effect waves-light btn">+</button>
-                    </a>
-                    <a href="{% url 'main:edit_product' product.id %}">
-                        <button class="waves-effect waves-light btn">Edit</button>
-                    </a>
-                    <a href="{% url 'main:delete' product.id %}">
-                        <button class="waves-effect waves-light btn">Delete</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+    <div class="row" id="product_card">
     </div>
 </body>
+
 </html>
 
 <div class="center-button">
@@ -119,9 +93,108 @@
     </a>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+
+<script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+
+    async function refreshProducts() {
+        document.getElementById("product_card").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = ""
+        let counter = 0
+        const totalProducts = products.length
+        for (const item of products) {
+            counter++
+            const isLastItem = counter === totalProducts
+            htmlString += `
+                <div class="col s12 m6 l4 ${isLastItem ? 'last-item' : ''}">
+                    <div class="card">  
+                        <div class="card-image">
+                            <img src="${item.fields.image}" width="75" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">${item.fields.menu}</span>
+                            <p>${item.fields.description}</p>
+                            <p>Category: ${item.fields.category}</p>
+                            <p>Price: ${item.fields.price}</p>
+                            <p>Stock Amount: ${item.fields.amount}</p>
+                            <p>Date Added: ${item.fields.date_added}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="decrease/${item.pk}">
+                                <button class="waves-effect waves-light btn">-</button>
+                            </a>
+                            <a href="increase/${item.pk}">
+                                <button class="waves-effect waves-light btn">+</button>
+                            </a>
+                            <a href="edit-product/${item.pk}">
+                                <button class="waves-effect waves-light btn">Edit</button>
+                            </a>
+                            <a href="delete/${item.pk}">
+                                <button class="waves-effect waves-light btn">Delete</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `
+        }
+        document.getElementById("product_card").innerHTML = htmlString
+    }
+
+    refreshProducts()
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.getElementById("button_add").onclick = addProduct
+</script>
+
+{% endblock content %}
+
 <!-- <a href="{% url 'main:logout' %}">
     <button class="waves-effect waves-light btn">
         Logout
     </button>
 </a> -->
-{% endblock content %}
