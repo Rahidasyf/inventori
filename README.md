@@ -771,3 +771,30 @@ Pilihan antara Fetch API dan jQuery tergantung pada kebutuhan dan preferensi pen
 Singkatnya, Fetch API dan jQuery adalah pilihan yang layak untuk mengimplementasikan AJAX dalam pengembangan web. Fetch adalah opsi yang lebih baru dan lebih cepat yang dibangun ke dalam peramban web modern, sedangkan jQuery adalah pustaka yang populer dan mapan dengan banyak fitur bawaan. Pilihan di antara keduanya pada akhirnya tergantung pada kebutuhan spesifik proyek dan preferensi pengembang.
 
 **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
+1. Mengubah tugas 5 yang telah dibuat sebelumnya menjadi menggunakan AJAX.
+
+    **Mengerjakan alur program dari AJAX GET**
+
+    Buat fungsi pada views.py untuk menampilkan data produk pada HTML dengan menggunakan fetch dan menambahkan produk baru ke basis data dengan AJAX
+    Menambahkan path untuk mengarahkan ke fungsi views yang sudah dibuat sebelumnya
+    Menambahkan id dan juga script yang diperlukan di dalam file main.html
+    Membuat modal sebagai form di dalam file main.html
+    
+    **Mengerjakan alur program dari AJAX POST**
+
+    Membuat fungsi baru di dalam script di file main.html
+    Tambahkan fungsi onclick untuk menambahkan item collections
+
+   **Melakukan perintah collectstatic Perintah collecstatic**
+   dilakukan menyesuaikan tutorial 2 pada bagian Menambahkan Konfigurasi Deployment ke PaaS PBP Fasilkom UI
+
+2. Menjawab pertanyaan di dalam file README.md
+
+3. Melakukan git workflow (add, commit, push)
+
+4. Melakukan deployment ke PaaS PBP Fasilkom UI
+
+    Mengunduh environ
+    Membuat beberapa file dan folder terkait deployment (Procfile, .dockerignore, Dockerfile, folder .github dan workflows, pbp-deploy.yml)
+    Mengedit settings.py dengan menambahkan beberapa kode baru terkait deployment
+    Set repository secret pada Secrets and variables di settings repository github dengan memasukkan DOKKU_SERVER_IP, DOKKU_APP_NAME, dan DOKKU_SSH_PRIVATE_KEY akses deployment : **http://rahida-syafa-tugas.pbp.cs.ui.ac.id**
